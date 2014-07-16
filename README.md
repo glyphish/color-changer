@@ -1,7 +1,7 @@
 Glyphish Color Changer ![app-icon](Glyphish Color Changer/Images.xcassets/AppIcon.appiconset/icon_32x32.png)
 ================
 
-Browse and search through your [Glyphish icons](http://glyphish.com/) in style.
+Easily change the color of your [Glyphish icons](http://glyphish.com/).
 
 ![Screenshot](screenshots/screenshot_1.png)
 
