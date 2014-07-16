@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE36E4E61975F81D0096DF06 /* 521-dropzone.png in Resources */ = {isa = PBXBuildFile; fileRef = CE36E4E51975F81D0096DF06 /* 521-dropzone.png */; };
+		CE36E4E91975FA380096DF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC1D1975A14A0059CCCD /* MainMenu.xib */; };
+		F1AAAC091975A14A0059CCCD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AAAC081975A14A0059CCCD /* Cocoa.framework */; };
+		F1AAAC131975A14A0059CCCD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC111975A14A0059CCCD /* InfoPlist.strings */; };
+		F1AAAC151975A14A0059CCCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AAAC141975A14A0059CCCD /* main.m */; };
+		F1AAAC191975A14A0059CCCD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC171975A14A0059CCCD /* Credits.rtf */; };
+		F1AAAC1C1975A14A0059CCCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AAAC1B1975A14A0059CCCD /* AppDelegate.m */; };
+		F1AAAC211975A14A0059CCCD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC201975A14A0059CCCD /* Images.xcassets */; };
+		F1AAAC3E1975D1670059CCCD /* NSImage+ImageMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AAAC3D1975D1670059CCCD /* NSImage+ImageMask.m */; };
+		F1BDF3311975ED7600BB3E6B /* GCCImportView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BDF3301975ED7600BB3E6B /* GCCImportView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE36E4E51975F81D0096DF06 /* 521-dropzone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "521-dropzone.png"; path = "images/icons/521-dropzone.png"; sourceTree = "<group>"; };
+		F1AAAC051975A14A0059CCCD /* Glyphish Color Changer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glyphish Color Changer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1AAAC081975A14A0059CCCD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F1AAAC0B1975A14A0059CCCD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F1AAAC0C1975A14A0059CCCD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F1AAAC0D1975A14A0059CCCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F1AAAC101975A14A0059CCCD /* Glyphish Color Changer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Glyphish Color Changer-Info.plist"; sourceTree = "<group>"; };
+		F1AAAC121975A14A0059CCCD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1AAAC141975A14A0059CCCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1AAAC161975A14A0059CCCD /* Glyphish Color Changer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glyphish Color Changer-Prefix.pch"; sourceTree = "<group>"; };
+		F1AAAC181975A14A0059CCCD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F1AAAC1A1975A14A0059CCCD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F1AAAC1B1975A14A0059CCCD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F1AAAC1E1975A14A0059CCCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F1AAAC201975A14A0059CCCD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F1AAAC3C1975D1670059CCCD /* NSImage+ImageMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+ImageMask.h"; path = "classes/NSImage+ImageMask.h"; sourceTree = "<group>"; };
+		F1AAAC3D1975D1670059CCCD /* NSImage+ImageMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+ImageMask.m"; path = "classes/NSImage+ImageMask.m"; sourceTree = "<group>"; };
+		F1BDF32B1975E7C200BB3E6B /* 521-dropzone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "521-dropzone.png"; path = "../../gallery/Glyphish Gallery/images/icons/521-dropzone.png"; sourceTree = "<group>"; };
+		F1BDF32F1975ED7600BB3E6B /* GCCImportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCCImportView.h; path = classes/GCCImportView.h; sourceTree = "<group>"; };
+		F1BDF3301975ED7600BB3E6B /* GCCImportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCCImportView.m; path = classes/GCCImportView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1AAAC021975A14A0059CCCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1AAAC091975A14A0059CCCD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE36E4E71975F8570096DF06 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				CE36E4E51975F81D0096DF06 /* 521-dropzone.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		CE36E4E81975F85F0096DF06 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CE36E4E71975F8570096DF06 /* icons */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		F1AAABFC1975A14A0059CCCD = {
+			isa = PBXGroup;
+			children = (
+				F1AAAC0E1975A14A0059CCCD /* Glyphish Color Changer */,
+				F1AAAC071975A14A0059CCCD /* Frameworks */,
+				F1AAAC061975A14A0059CCCD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1AAAC061975A14A0059CCCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1AAAC051975A14A0059CCCD /* Glyphish Color Changer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1AAAC071975A14A0059CCCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1AAAC081975A14A0059CCCD /* Cocoa.framework */,
+				F1AAAC0A1975A14A0059CCCD /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1AAAC0A1975A14A0059CCCD /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1AAAC0B1975A14A0059CCCD /* AppKit.framework */,
+				F1AAAC0C1975A14A0059CCCD /* CoreData.framework */,
+				F1AAAC0D1975A14A0059CCCD /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F1AAAC0E1975A14A0059CCCD /* Glyphish Color Changer */ = {
+			isa = PBXGroup;
+			children = (
+				F1AAAC1A1975A14A0059CCCD /* AppDelegate.h */,
+				F1AAAC1B1975A14A0059CCCD /* AppDelegate.m */,
+				F1AAAC3C1975D1670059CCCD /* NSImage+ImageMask.h */,
+				F1AAAC3D1975D1670059CCCD /* NSImage+ImageMask.m */,
+				F1BDF32F1975ED7600BB3E6B /* GCCImportView.h */,
+				F1BDF3301975ED7600BB3E6B /* GCCImportView.m */,
+				F1AAAC1D1975A14A0059CCCD /* MainMenu.xib */,
+				CE36E4E81975F85F0096DF06 /* images */,
+				F1AAAC201975A14A0059CCCD /* Images.xcassets */,
+				F1AAAC0F1975A14A0059CCCD /* Supporting Files */,
+			);
+			path = "Glyphish Color Changer";
+			sourceTree = "<group>";
+		};
+		F1AAAC0F1975A14A0059CCCD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1BDF32D1975E7CA00BB3E6B /* images */,
+				F1AAAC101975A14A0059CCCD /* Glyphish Color Changer-Info.plist */,
+				F1AAAC111975A14A0059CCCD /* InfoPlist.strings */,
+				F1AAAC141975A14A0059CCCD /* main.m */,
+				F1AAAC161975A14A0059CCCD /* Glyphish Color Changer-Prefix.pch */,
+				F1AAAC171975A14A0059CCCD /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1BDF32D1975E7CA00BB3E6B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F1BDF32E1975E7CF00BB3E6B /* icons */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		F1BDF32E1975E7CF00BB3E6B /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				F1BDF32B1975E7C200BB3E6B /* 521-dropzone.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1AAAC041975A14A0059CCCD /* Glyphish Color Changer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1AAAC361975A14A0059CCCD /* Build configuration list for PBXNativeTarget "Glyphish Color Changer" */;
+			buildPhases = (
+				F1AAAC011975A14A0059CCCD /* Sources */,
+				F1AAAC021975A14A0059CCCD /* Frameworks */,
+				F1AAAC031975A14A0059CCCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Glyphish Color Changer";
+			productName = "Glyphish Color Changer";
+			productReference = F1AAAC051975A14A0059CCCD /* Glyphish Color Changer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1AAABFD1975A14A0059CCCD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GCC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Rudd Fawcett";
+			};
+			buildConfigurationList = F1AAAC001975A14A0059CCCD /* Build configuration list for PBXProject "Glyphish Color Changer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1AAABFC1975A14A0059CCCD;
+			productRefGroup = F1AAAC061975A14A0059CCCD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1AAAC041975A14A0059CCCD /* Glyphish Color Changer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1AAAC031975A14A0059CCCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1AAAC131975A14A0059CCCD /* InfoPlist.strings in Resources */,
+				F1AAAC211975A14A0059CCCD /* Images.xcassets in Resources */,
+				F1AAAC191975A14A0059CCCD /* Credits.rtf in Resources */,
+				CE36E4E61975F81D0096DF06 /* 521-dropzone.png in Resources */,
+				CE36E4E91975FA380096DF06 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1AAAC011975A14A0059CCCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1AAAC3E1975D1670059CCCD /* NSImage+ImageMask.m in Sources */,
+				F1BDF3311975ED7600BB3E6B /* GCCImportView.m in Sources */,
+				F1AAAC1C1975A14A0059CCCD /* AppDelegate.m in Sources */,
+				F1AAAC151975A14A0059CCCD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F1AAAC111975A14A0059CCCD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1AAAC121975A14A0059CCCD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1AAAC171975A14A0059CCCD /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1AAAC181975A14A0059CCCD /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F1AAAC1D1975A14A0059CCCD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1AAAC1E1975A14A0059CCCD /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1AAAC341975A14A0059CCCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F1AAAC351975A14A0059CCCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F1AAAC371975A14A0059CCCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Glyphish Color Changer/Glyphish Color Changer-Prefix.pch";
+				INFOPLIST_FILE = "Glyphish Color Changer/Glyphish Color Changer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F1AAAC381975A14A0059CCCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Glyphish Color Changer/Glyphish Color Changer-Prefix.pch";
+				INFOPLIST_FILE = "Glyphish Color Changer/Glyphish Color Changer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1AAAC001975A14A0059CCCD /* Build configuration list for PBXProject "Glyphish Color Changer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1AAAC341975A14A0059CCCD /* Debug */,
+				F1AAAC351975A14A0059CCCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1AAAC361975A14A0059CCCD /* Build configuration list for PBXNativeTarget "Glyphish Color Changer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1AAAC371975A14A0059CCCD /* Debug */,
+				F1AAAC381975A14A0059CCCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1AAABFD1975A14A0059CCCD /* Project object */;
+}
