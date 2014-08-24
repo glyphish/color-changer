@@ -44,7 +44,8 @@
         
         for (NSString *path in draggedFiles) {
             if ([[path pathExtension] isEqualToString:@"png"]) {
-                NSImage *originalImage = [[NSImage alloc] initWithContentsOfFile:path];
+                NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
+                NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
                 
                 NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
                 
@@ -80,10 +81,11 @@
     NSBitmapImageRep *newRepresentation = [[NSBitmapImageRep alloc] initWithCGImage:cgImageRef];
     newRepresentation.size = image.size;
     
+    // NSLog(@"%f, %f", newRepresentation.size.width, newRepresentation.size.height);
+    
     NSData *png = [newRepresentation representationUsingType:NSPNGFileType properties:nil];
     if ([png writeToFile:path atomically:YES]) {
-        NSLog(@"%@",path);
-        NSLog(@"good");
+        return;
     };
 }
 
