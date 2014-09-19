@@ -8,6 +8,7 @@
 
 #import "GCCImportView.h"
 
+
 @implementation GCCImportView
 
 - (id)initWithFrame:(NSRect)frame {
@@ -26,51 +27,78 @@
 }
 
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender {
-    NSOpenPanel *panel = [NSOpenPanel openPanel];
-    panel.allowsMultipleSelection = NO;
-    panel.canChooseDirectories = YES;
-    panel.canChooseFiles = NO;
     
-    NSString *iconTitle = [[[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType] count] == 1 ? @"icon" : @"icons";
+    NSArray *draggedFiles = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
     
-    panel.title = [NSString stringWithFormat:@"Pick a folder to export your new %@.", iconTitle];
-    
-    long result = [panel runModal];
-    
-    if (result == NSOKButton) {
-        NSString *folderPath = panel.URL.path;
-
-        NSArray *draggedFiles = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:CGPreferenceOverwriteOriginal])
+    {
+        [self processFiles:draggedFiles toFolder:NULL];
+    }
+    else
+    {
+        NSOpenPanel *panel = [NSOpenPanel openPanel];
+        panel.allowsMultipleSelection = NO;
+        panel.canChooseDirectories = YES;
+        panel.canChooseFiles = NO;
         
-        for (NSString *path in draggedFiles) {
-            if ([[path pathExtension] isEqualToString:@"png"]) {
-                NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
-                NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
-                
-                NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
-                
-                [self savePNGImage:maskedImage atPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]]];
+        NSString *iconTitle = [[[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType] count] == 1 ? @"icon" : @"icons";
+        
+        panel.title = [NSString stringWithFormat:@"Pick a folder to export your new %@.", iconTitle];
+        
+        long result = [panel runModal];
+        
+        if (result == NSOKButton) {
+            NSString *folderPath = panel.URL.path;
+            if (!folderPath)
+            {
+                //paranoid check for folder path. Don't want to overwrite originals by mistake
+                NSLog(@"Error - expected to have a folder path here");
+                return;
             }
-            else if ([[path pathExtension] isEqualToString:@"svg"]) {
-                NSData *data = [NSData dataWithContentsOfFile:path];
-                NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            [self processFiles:draggedFiles toFolder:folderPath];
+        }
+    }
+    
+}
+
+//pass NULL destination to save file over original
+-(void)processFiles:(NSArray*)draggedFiles toFolder:(NSString*)folderPath
+{
+    for (NSString *path in draggedFiles) {
+        if ([[path pathExtension] isEqualToString:@"png"]) {
+            NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
+            NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
+            
+            NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
+            
+            NSString *destination=path;
+            if (folderPath)
+            {
+                destination=[folderPath stringByAppendingPathComponent:[path lastPathComponent]];
+            }
+            
+            [self savePNGImage:maskedImage atPath:destination];
+        }
+        else if ([[path pathExtension] isEqualToString:@"svg"]) {
+            NSData *data = [NSData dataWithContentsOfFile:path];
+            NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] error:nil]) {
+                NSString *replacementString = [NSString stringWithFormat:@" fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
                 
-                if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] error:nil]) {
-                    NSString *replacementString = [NSString stringWithFormat:@" fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
-                    
-                    contents = [contents stringByReplacingOccurrencesOfString:@" fill=\"#000000\"" withString:replacementString];
-                    
-                    [[NSFileManager defaultManager] createFileAtPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-                    
-                    // Testing:
-                    
-                    /*
-                    NSData *data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:[path lastPathComponent]]];
-                    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    
-                    NSLog(@"%@",string);
-                    */
-                }
+                contents = [contents stringByReplacingOccurrencesOfString:@" fill=\"#000000\"" withString:replacementString];
+                
+                [[NSFileManager defaultManager] createFileAtPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+                
+                // Testing:
+                
+                /*
+                 NSData *data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:[path lastPathComponent]]];
+                 NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                 
+                 NSLog(@"%@",string);
+                 */
             }
         }
     }

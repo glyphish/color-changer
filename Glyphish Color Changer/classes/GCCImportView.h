@@ -10,6 +10,8 @@
 
 #import "NSImage+ImageMask.h"
 
+#define CGPreferenceOverwriteOriginal @"CGPreferenceOverwriteOriginal"
+
 @interface GCCImportView : NSView <NSDraggingDestination>
 
 @property (strong, nonatomic) IBOutlet NSColorWell *colorWell;
