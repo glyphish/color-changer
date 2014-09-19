@@ -11,6 +11,7 @@
 #import "NSImage+ImageMask.h"
 
 #define CGPreferenceOverwriteOriginal @"CGPreferenceOverwriteOriginal"
+#define CGPreferenceColor @"CGPreferenceColor"
 
 @interface GCCImportView : NSView <NSDraggingDestination>
 

@@ -127,6 +127,13 @@
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-eA-Ayr">
                         <rect key="frame" x="12" y="48" width="205" height="37"/>
                         <color key="color" red="0.0" green="0.36078431370000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <binding destination="Rx6-C1-8lX" name="value" keyPath="values.CGPreferenceColor" id="4ZA-bS-pwO">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </colorWell>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-y4-Vcj">
                         <rect key="frame" x="10" y="18" width="209" height="18"/>
