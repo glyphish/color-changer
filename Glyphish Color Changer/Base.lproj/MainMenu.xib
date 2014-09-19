@@ -89,8 +89,8 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="539" y="300" width="227" height="289"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
-            <value key="minSize" type="size" width="229" height="253"/>
-            <value key="maxSize" type="size" width="229" height="253"/>
+            <value key="minSize" type="size" width="229" height="289"/>
+            <value key="maxSize" type="size" width="229" height="289"/>
             <view key="contentView" id="32t-c2-KIM">
                 <rect key="frame" x="0.0" y="0.0" width="227" height="289"/>
                 <autoresizingMask key="autoresizingMask"/>
