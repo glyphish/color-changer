@@ -27,15 +27,12 @@
 }
 
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender {
-    
     NSArray *draggedFiles = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:CGPreferenceOverwriteOriginal])
-    {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:CGPreferenceOverwriteOriginal]) {
         [self processFiles:draggedFiles toFolder:NULL];
     }
-    else
-    {
+    else {
         NSOpenPanel *panel = [NSOpenPanel openPanel];
         panel.allowsMultipleSelection = NO;
         panel.canChooseDirectories = YES;
@@ -49,9 +46,8 @@
         
         if (result == NSOKButton) {
             NSString *folderPath = panel.URL.path;
-            if (!folderPath)
-            {
-                //paranoid check for folder path. Don't want to overwrite originals by mistake
+            if (!folderPath) {
+                // paranoid check for folder path. Don't want to overwrite originals by mistake
                 NSLog(@"Error - expected to have a folder path here");
                 return;
             }
@@ -59,12 +55,11 @@
             [self processFiles:draggedFiles toFolder:folderPath];
         }
     }
-    
+
 }
 
 //pass NULL destination to save file over original
--(void)processFiles:(NSArray*)draggedFiles toFolder:(NSString*)folderPath
-{
+-(void)processFiles:(NSArray*)draggedFiles toFolder:(NSString*)folderPath {
     for (NSString *path in draggedFiles) {
         if ([[path pathExtension] isEqualToString:@"png"]) {
             NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
@@ -72,10 +67,9 @@
             
             NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
             
-            NSString *destination=path;
-            if (folderPath)
-            {
-                destination=[folderPath stringByAppendingPathComponent:[path lastPathComponent]];
+            NSString *destination = path;
+            if (folderPath) {
+                destination = [folderPath stringByAppendingPathComponent:[path lastPathComponent]];
             }
             
             [self savePNGImage:maskedImage atPath:destination];
