@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6206.9"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,7 +10,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="colorWell" destination="kxO-eA-Ayr" id="zTX-WW-rul"/>
@@ -86,22 +86,22 @@
             </items>
         </menu>
         <window title="Glyphish Color Changer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="iKn-Hu-Rkv" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="539" y="300" width="229" height="255"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="539" y="300" width="227" height="289"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="229" height="253"/>
-            <value key="maxSize" type="size" width="229" height="253"/>
+            <value key="minSize" type="size" width="229" height="289"/>
+            <value key="maxSize" type="size" width="229" height="289"/>
             <view key="contentView" id="32t-c2-KIM">
-                <rect key="frame" x="0.0" y="0.0" width="229" height="255"/>
+                <rect key="frame" x="0.0" y="0.0" width="227" height="289"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" appearanceType="aqua" fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-fU-bg9">
-                        <rect key="frame" x="11" y="55" width="207" height="204"/>
+                        <rect key="frame" x="11" y="89" width="207" height="204"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="205" height="188"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-S1-0c3">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-S1-0c3">
                                     <rect key="frame" x="12" y="45" width="180" height="19"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Drop icons here..." id="SaF-f7-4U8">
                                         <font key="font" metaFont="system" size="16"/>
@@ -109,7 +109,7 @@
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <imageView appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55S-Yg-Rzr">
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55S-Yg-Rzr">
                                     <rect key="frame" x="65" y="72" width="75" height="75"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="521-dropzone" id="prD-Kh-6fu"/>
                                 </imageView>
@@ -124,13 +124,32 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <colorWell appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-eA-Ayr">
-                        <rect key="frame" x="12" y="14" width="205" height="37"/>
+                    <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-eA-Ayr">
+                        <rect key="frame" x="12" y="48" width="205" height="37"/>
                         <color key="color" red="0.0" green="0.36078431370000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <binding destination="Rx6-C1-8lX" name="value" keyPath="values.CGPreferenceColor" id="4ZA-bS-pwO">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </colorWell>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-y4-Vcj">
+                        <rect key="frame" x="12" y="18" width="209" height="18"/>
+                        <buttonCell key="cell" type="check" title="Overwrite original icon paths." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vWh-Ze-gOK">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Rx6-C1-8lX" name="value" keyPath="values.CGPreferenceOverwriteOriginal" id="9CF-rR-XEn"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="340.5" y="598.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="Rx6-C1-8lX"/>
     </objects>
     <resources>
         <image name="521-dropzone" width="100" height="100"/>
