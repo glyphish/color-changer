@@ -14,7 +14,7 @@ Easily change the color of your [Glyphish icons](http://glyphish.com/).
 * Import multiple and mixed (SVG and PNG) icons at a time.
 
 ## Support
-To resolve any issues you may be having, [open an issue](https://github.com/glyphish/gallery/issues).  Any issues opened will be at least responded to within **24 hours**, and resolved as soon as possible!
+To resolve any issues you may be having, [open an issue](https://github.com/glyphish/color-changer/issues).  Any issues opened will be at least responded to within **24 hours**, and resolved as soon as possible!
 
 ## Changelog
 #### Version 1.0
