@@ -126,12 +126,23 @@
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] error:nil]) {
-        NSString *replacementString = [NSString stringWithFormat:@" fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
+    NSString *destination = path;
+    if (folderPath) {
+        destination = [folderPath stringByAppendingPathComponent:[path lastPathComponent]];
+    }
+    
+    if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:destination error:nil]) {
+        NSString *replacementString = [NSString stringWithFormat:@"<svg fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
         
-        contents = [contents stringByReplacingOccurrencesOfString:@" fill=\"#000000\"" withString:replacementString];
+        // HACK - probably should use some regex to scan for all fills.
+        NSString *hex = [contents stringBetweenString:@"fill=\"" andString:@"\""];
+        if (hex.length != 0) {
+            contents = [contents stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"fill=\"%@\"", hex] withString:@""];
+        }
         
-        [[NSFileManager defaultManager] createFileAtPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        contents = [contents stringByReplacingOccurrencesOfString:@"<svg" withString:replacementString];
+
+        [[NSFileManager defaultManager] createFileAtPath:destination contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
         
         // Testing:
         

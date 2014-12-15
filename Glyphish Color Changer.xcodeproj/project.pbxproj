@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE36E4E61975F81D0096DF06 /* 521-dropzone.png in Resources */ = {isa = PBXBuildFile; fileRef = CE36E4E51975F81D0096DF06 /* 521-dropzone.png */; };
 		CE36E4E91975FA380096DF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC1D1975A14A0059CCCD /* MainMenu.xib */; };
+		F19C89141A3F2AB60039ED83 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C89131A3F2AB60039ED83 /* NSString+Additions.m */; };
 		F1AAAC091975A14A0059CCCD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AAAC081975A14A0059CCCD /* Cocoa.framework */; };
 		F1AAAC131975A14A0059CCCD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1AAAC111975A14A0059CCCD /* InfoPlist.strings */; };
 		F1AAAC151975A14A0059CCCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AAAC141975A14A0059CCCD /* main.m */; };
@@ -21,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		CE36E4E51975F81D0096DF06 /* 521-dropzone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "521-dropzone.png"; path = "images/icons/521-dropzone.png"; sourceTree = "<group>"; };
+		F19C89121A3F2AB60039ED83 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Additions.h"; path = "classes/NSString+Additions.h"; sourceTree = "<group>"; };
+		F19C89131A3F2AB60039ED83 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Additions.m"; path = "classes/NSString+Additions.m"; sourceTree = "<group>"; };
 		F1AAAC051975A14A0059CCCD /* Glyphish Color Changer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glyphish Color Changer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AAAC081975A14A0059CCCD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F1AAAC0B1975A14A0059CCCD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 				F1AAAC1B1975A14A0059CCCD /* AppDelegate.m */,
 				F1AAAC3C1975D1670059CCCD /* NSImage+ImageMask.h */,
 				F1AAAC3D1975D1670059CCCD /* NSImage+ImageMask.m */,
+				F19C89121A3F2AB60039ED83 /* NSString+Additions.h */,
+				F19C89131A3F2AB60039ED83 /* NSString+Additions.m */,
 				F1BDF32F1975ED7600BB3E6B /* GCCImportView.h */,
 				F1BDF3301975ED7600BB3E6B /* GCCImportView.m */,
 				F1AAAC1D1975A14A0059CCCD /* MainMenu.xib */,
@@ -223,6 +228,7 @@
 				F1AAAC3E1975D1670059CCCD /* NSImage+ImageMask.m in Sources */,
 				F1BDF3311975ED7600BB3E6B /* GCCImportView.m in Sources */,
 				F1AAAC1C1975A14A0059CCCD /* AppDelegate.m in Sources */,
+				F19C89141A3F2AB60039ED83 /* NSString+Additions.m in Sources */,
 				F1AAAC151975A14A0059CCCD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

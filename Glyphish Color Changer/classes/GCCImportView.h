@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "NSImage+ImageMask.h"
+#import "NSString+Additions.h"
 
 #define CGPreferenceOverwriteOriginal @"CGPreferenceOverwriteOriginal"
 #define CGPreferenceColor @"CGPreferenceColor"
