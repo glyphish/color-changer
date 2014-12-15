@@ -59,51 +59,82 @@
 }
 
 //pass NULL destination to save file over original
--(void)processFiles:(NSArray*)draggedFiles toFolder:(NSString*)folderPath {
+-(void)processFiles:(NSArray *)draggedFiles toFolder:(NSString *)folderPath {
     for (NSString *path in draggedFiles) {
-        if ([[path pathExtension] isEqualToString:@"png"]) {
-            NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
-            NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
+        BOOL isDir = NO;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir] && isDir) {
+            NSError *error;
             
-            NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
-            
-            NSString *destination = path;
-            if (folderPath) {
-                destination = [folderPath stringByAppendingPathComponent:[path lastPathComponent]];
+            NSArray *foldercontents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+            if (!error) {
+                for (NSString *eachIcon in foldercontents) {
+                    NSString *iconPath = [path stringByAppendingPathComponent:eachIcon];
+                    
+                    NSLog(@"%@",iconPath);
+                    
+                    if ([[iconPath pathExtension] isEqualToString:@"png"]) {
+                        [self handlePNG:iconPath folderPath:folderPath];
+                        
+                    }
+                    else if ([[path pathExtension] isEqualToString:@"svg"]) {
+                        [self handleSVG:iconPath folderPath:folderPath];
+                    }
+                }
             }
-            
-            [self savePNGImage:maskedImage atPath:destination];
+        }
+        
+        if ([[path pathExtension] isEqualToString:@"png"]) {
+            [self handlePNG:path folderPath:folderPath];
+
         }
         else if ([[path pathExtension] isEqualToString:@"svg"]) {
-            NSData *data = [NSData dataWithContentsOfFile:path];
-            NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] error:nil]) {
-                NSString *replacementString = [NSString stringWithFormat:@" fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
-                
-                contents = [contents stringByReplacingOccurrencesOfString:@" fill=\"#000000\"" withString:replacementString];
-                
-                [[NSFileManager defaultManager] createFileAtPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-                
-                // Testing:
-                
-                /*
-                 NSData *data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:[path lastPathComponent]]];
-                 NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                 
-                 NSLog(@"%@",string);
-                 */
-            }
+            [self handleSVG:path folderPath:folderPath];
         }
+    }
+}
+
+- (void)handlePNG:(NSString *)path folderPath:(NSString *)folderPath {
+    NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
+    NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
+    
+    NSImage *maskedImage = [NSImage maskedImage:originalImage withNSColor:self.colorWell.color];
+    
+    NSString *destination = path;
+    if (folderPath) {
+        destination = [folderPath stringByAppendingPathComponent:[path lastPathComponent]];
+    }
+    
+    [self savePNGImage:maskedImage atPath:destination];
+}
+
+- (void)handleSVG:(NSString *)path folderPath:(NSString *)folderPath {
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    if ([[NSFileManager defaultManager] copyItemAtPath:path toPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] error:nil]) {
+        NSString *replacementString = [NSString stringWithFormat:@" fill=\"%@\"",[self hexadecimalValueOfAnNSColor:self.colorWell.color]];
+        
+        contents = [contents stringByReplacingOccurrencesOfString:@" fill=\"#000000\"" withString:replacementString];
+        
+        [[NSFileManager defaultManager] createFileAtPath:[folderPath stringByAppendingPathComponent:[path lastPathComponent]] contents:[contents dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        
+        // Testing:
+        
+        /*
+         NSData *data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:[path lastPathComponent]]];
+         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+         
+         NSLog(@"%@",string);
+         */
     }
 }
 
 - (void)savePNGImage:(NSImage *)image atPath:(NSString *)path {
     CGImageRef cgImageRef = [image CGImageForProposedRect:NULL context:nil hints:nil];
     NSBitmapImageRep *newRepresentation = [[NSBitmapImageRep alloc] initWithCGImage:cgImageRef];
-    newRepresentation.size = image.size;
+    newRepresentation.size = CGSizeMake(image.size.width/2, image.size.height/2);
     
-    // NSLog(@"%f, %f", newRepresentation.size.width, newRepresentation.size.height);
+    NSLog(@"%f, %f", newRepresentation.size.width, newRepresentation.size.height);
     
     NSData *png = [newRepresentation representationUsingType:NSPNGFileType properties:nil];
     if ([png writeToFile:path atomically:YES]) {
