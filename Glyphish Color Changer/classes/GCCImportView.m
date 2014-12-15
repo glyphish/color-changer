@@ -47,7 +47,7 @@
         if (result == NSOKButton) {
             NSString *folderPath = panel.URL.path;
             if (!folderPath) {
-                // paranoid check for folder path. Don't want to overwrite originals by mistake
+                // Paranoid check for folder path. Don't want to overwrite originals by mistake
                 NSLog(@"Error - expected to have a folder path here");
                 return;
             }
@@ -58,7 +58,12 @@
 
 }
 
-//pass NULL destination to save file over original
+/**
+ *  Handles the files dragged onto the view.  Pass NULL as destination to overwrite original file path.
+ *
+ *  @param draggedFiles The array of paths for the dragged files.
+ *  @param folderPath   The path to the output folder.
+ */
 -(void)processFiles:(NSArray *)draggedFiles toFolder:(NSString *)folderPath {
     for (NSString *path in draggedFiles) {
         BOOL isDir = NO;
@@ -69,8 +74,6 @@
             if (!error) {
                 for (NSString *eachIcon in foldercontents) {
                     NSString *iconPath = [path stringByAppendingPathComponent:eachIcon];
-                    
-                    NSLog(@"%@",iconPath);
                     
                     if ([[iconPath pathExtension] isEqualToString:@"png"]) {
                         [self handlePNG:iconPath folderPath:folderPath];
@@ -93,6 +96,12 @@
     }
 }
 
+/**
+ *  Change the color of the PNG dragged onto the view.
+ *
+ *  @param path       The path to the PNG image.
+ *  @param folderPath The path to the output folder.
+ */
 - (void)handlePNG:(NSString *)path folderPath:(NSString *)folderPath {
     NSData *imageData = [[NSData alloc] initWithContentsOfFile:path];
     NSImage *originalImage = [[NSImage alloc] initWithData:imageData];
@@ -107,6 +116,12 @@
     [self savePNGImage:maskedImage atPath:destination];
 }
 
+/**
+ *  Change the color of the SVG dragged onto the view.
+ *
+ *  @param path       The path to the SVG.
+ *  @param folderPath The path to the output folder.
+ */
 - (void)handleSVG:(NSString *)path folderPath:(NSString *)folderPath {
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSString *contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -129,12 +144,16 @@
     }
 }
 
+/**
+ *  Method to save the PNG image.
+ *
+ *  @param image The altered PNG image to save.
+ *  @param path  The path to save the PNG.
+ */
 - (void)savePNGImage:(NSImage *)image atPath:(NSString *)path {
     CGImageRef cgImageRef = [image CGImageForProposedRect:NULL context:nil hints:nil];
     NSBitmapImageRep *newRepresentation = [[NSBitmapImageRep alloc] initWithCGImage:cgImageRef];
     newRepresentation.size = CGSizeMake(image.size.width/2, image.size.height/2);
-    
-    NSLog(@"%f, %f", newRepresentation.size.width, newRepresentation.size.height);
     
     NSData *png = [newRepresentation representationUsingType:NSPNGFileType properties:nil];
     if ([png writeToFile:path atomically:YES]) {
@@ -142,7 +161,14 @@
     };
 }
 
-// https://developer.apple.com/library/mac/qa/qa1576/_index.html
+/**
+ *  Returns the hexadecimal value of a color.  Taken from
+ *  https://developer.apple.com/library/mac/qa/qa1576/_index.html.
+ *
+ *  @param color The NSColor to convert to a hex string.
+ *
+ *  @return The hex string.
+ */
 - (NSString *)hexadecimalValueOfAnNSColor:(NSColor *)color {
     double redFloatValue, greenFloatValue, blueFloatValue;
     int redIntValue, greenIntValue, blueIntValue;

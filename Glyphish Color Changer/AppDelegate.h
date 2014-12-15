@@ -12,7 +12,14 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+/**
+ *  The main window.
+ */
 @property (assign)            IBOutlet NSWindow      *window;
+
+/**
+ *  The import view to drag the icons.
+ */
 @property (strong, nonatomic) IBOutlet GCCImportView *importView;
 
 @end

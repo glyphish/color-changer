@@ -15,6 +15,9 @@
 
 @interface GCCImportView : NSView <NSDraggingDestination>
 
+/**
+ *  The colorwell to get the color to mask the icons.
+ */
 @property (strong, nonatomic) IBOutlet NSColorWell *colorWell;
 
 @end

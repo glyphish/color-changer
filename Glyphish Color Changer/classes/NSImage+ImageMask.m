@@ -26,10 +26,18 @@
 @implementation NSImage (ImageMask)
 
 + (instancetype)maskedImage:(NSImage *)image withNSColor:(NSColor *)color {
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    CGRect rect;
     
-    NSImage *result = [[NSImage alloc] initWithSize:image.size];
-    [result lockFocusFlipped:image.isFlipped];
+    if ([[NSScreen mainScreen] backingScaleFactor] == 1.0) {
+        rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    }
+    else {
+        rect = CGRectMake(0, 0, image.size.width/2, image.size.height/2);
+    }
+    
+    NSImage *result = [[NSImage alloc] initWithSize:rect.size];
+    
+    [result lockFocus];
     
     NSGraphicsContext *context = [NSGraphicsContext currentContext];
     CGContextRef contextRef = (CGContextRef)context.graphicsPort;
